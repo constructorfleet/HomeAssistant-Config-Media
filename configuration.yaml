@@ -1,0 +1,5 @@
+media_player:  !include_dir_list media_players
+apple_tv: !include_dir_list apple_tvs
+remote: !include_dir_list remotes
+cast:
+  media_player: !include_dir_list google_casts

@@ -1,0 +1,4 @@
+platform: harmony
+name: Office Harmony Hub
+host: !secret office_harmony_host
+port: !secret office_harmony_port

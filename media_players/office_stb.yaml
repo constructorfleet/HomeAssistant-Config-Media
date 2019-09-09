@@ -1,0 +1,11 @@
+platform: androidtv
+host: !secret office_shield_host
+adb_server_ip: !secret adb_server_host
+adb_server_port: !secret adb_server_port
+name: Office Shield
+apps:
+  plex: Plex
+  amazon: Amazon Prime Video
+  netflix: Netflix
+  spotify: Spotify
+  youtube: Youtube

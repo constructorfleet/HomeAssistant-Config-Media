@@ -1,0 +1,5 @@
+platform: samsungtv
+host: !secret master_tv_host
+port: !secret master_tv_port
+name: Master Bedroom TV
+mac: !secret master_tv_mac
