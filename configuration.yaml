@@ -6,9 +6,6 @@ homeassistant:
   time_zone: !secret home_timezone
   name: Media
 
-http:
-  server_port: !secret media_server_port
-
 frontend:
 
 media_player:  !include_dir_list media_players
