@@ -15,7 +15,7 @@ homeassistant:
     - type: homeassistant
 
 view_event:
-  instance_name: media
+  name: media
   components:
     - spotify
     - media_player
