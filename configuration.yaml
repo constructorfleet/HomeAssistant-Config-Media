@@ -15,11 +15,13 @@ homeassistant:
     - type: homeassistant
 
 view_event:
+  name: media
   components:
-    - camera
+    - spotify
     - media_player
-    - device_tracker
-    - person
+    - apple_tv
+    - cast
+    - remote
 
 http:
   base_url: https://automation.pretybaked.com
@@ -28,11 +30,6 @@ http:
 frontend:
 
 config:
-
-view_event:
-  components:
-    - spotify
-    - media_player_proxy
 
 media_player:  !include_dir_list media_players
 apple_tv: !include_dir_list apple_tvs
