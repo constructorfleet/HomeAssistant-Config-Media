@@ -14,14 +14,14 @@ homeassistant:
       allow_bypass_login: true
     - type: homeassistant
 
-view_event:
-  name: media
-  components:
-    - spotify
-    - media_player
-    - appletv
-    - cast
-    - remote
+# view_event:
+#   name: media
+#   components:
+#     - spotify
+#     - media_player
+#     - appletv
+#     - cast
+#     - remote
 
 http:
   base_url: https://automation.pretybaked.com
