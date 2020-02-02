@@ -24,7 +24,7 @@ homeassistant:
 #     - remote
 
 http:
-  base_url: http://media.constructorfleet.iot:3000
+  base_url: http://media.constructorfleet.iot
 #  server_port: !secret media_server_public_port
 
 frontend:
