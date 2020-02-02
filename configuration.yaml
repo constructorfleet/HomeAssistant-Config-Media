@@ -24,6 +24,7 @@ homeassistant:
 #     - remote
 
 http:
+  base_url: http://media.constructorfleet.iot
 
 frontend:
 
