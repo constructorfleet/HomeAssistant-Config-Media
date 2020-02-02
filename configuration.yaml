@@ -24,7 +24,7 @@ homeassistant:
 #     - remote
 
 http:
-#  base_url: https://automation.pretybaked.com
+  base_url: http://media.constructorfleet.iot:3000
 #  server_port: !secret media_server_public_port
 
 frontend:
