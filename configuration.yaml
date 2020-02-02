@@ -24,8 +24,8 @@ homeassistant:
 #     - remote
 
 http:
-  base_url: https://automation.pretybaked.com
-  server_port: !secret media_server_public_port
+#  base_url: https://automation.pretybaked.com
+#  server_port: !secret media_server_public_port
 
 frontend:
 
@@ -38,5 +38,5 @@ cast:
   media_player: !include_dir_list google_casts
 
 mqtt: !include mqtt.yaml
-# mqtteventstream: !include eventstream.yaml
-mqtt_remoteinstance: !include mqtt_remoteinstance.yaml
+mqtteventstream: !include eventstream.yaml
+#mqtt_remoteinstance: !include mqtt_remoteinstance.yaml
