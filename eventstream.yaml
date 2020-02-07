@@ -1,6 +1,7 @@
 name: media
 publish_topic: events/slaves/media
 subscribe_topic: events/master
+state_topic: states
 ignore_event:
   - call_service
   - component_loaded
