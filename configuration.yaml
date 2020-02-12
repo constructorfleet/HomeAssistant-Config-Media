@@ -24,7 +24,7 @@ homeassistant:
 #     - remote
 
 http:
-  base_url: http://media.constructorfleet.iot
+  base_url: https://media.automation.home.prettybaked.com
 
 frontend:
 
