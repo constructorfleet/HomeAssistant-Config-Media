@@ -14,14 +14,7 @@ homeassistant:
       allow_bypass_login: true
     - type: homeassistant
 
-# view_event:
-#   name: media
-#   components:
-#     - spotify
-#     - media_player
-#     - appletv
-#     - cast
-#     - remote
+view_event: !include view_event.yaml
 
 http:
   base_url: https://media.automation.home.prettybaked.com
@@ -31,11 +24,9 @@ frontend:
 config:
 
 media_player:  !include_dir_list media_players
-# appletv: !include_dir_list apple_tvs
 remote: !include_dir_list remotes
 cast:
   media_player: !include_dir_list google_casts
 
 mqtt: !include mqtt.yaml
 mqtteventstream: !include eventstream.yaml
-#mqtt_remoteinstance: !include mqtt_remoteinstance.yaml
