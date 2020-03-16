@@ -1,5 +1,6 @@
 publish_topic: events/slaves/media
 state_publish_topic: states/slaves/media
+route_publish_topic: routes/slaves/media
 subscribe_topic: events/master
 subscribe_rules_topic: events/rules
 ignore_event:
