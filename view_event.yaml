@@ -1,7 +1,3 @@
 components:
   - spotify
   - media_player
-  - appletv
-  - cast
-  - remote
-  - webhook
