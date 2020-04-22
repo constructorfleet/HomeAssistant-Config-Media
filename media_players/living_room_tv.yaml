@@ -1,4 +1,5 @@
 platform: samsungtv_tizen
+name: Living Room TV
 host: 10.0.11.20
 port: 8002
 api_key: !secret samsung_api_key
