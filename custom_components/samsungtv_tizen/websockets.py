@@ -36,6 +36,7 @@ class SamsungTVWS:
     _URL_FORMAT = 'ws://{host}:{port}/api/v2/channels/samsung.remote.control?name={name}'
     _SSL_URL_FORMAT = 'wss://{host}:{port}/api/v2/channels/samsung.remote.control?name={name}&token={token}'
     _REST_URL_FORMAT = 'http://{host}:8001/api/v2/{append}'
+    _TOKEN_URL_FORMAT = 'http://{host}:8000/socket.io/1'
 
     def __init__(self, host, token=None, token_file=None, port=8001, timeout=None, key_press_delay=1,
                  name='SamsungTvRemote', app_list=None):
@@ -86,14 +87,23 @@ class SamsungTVWS:
         return self._REST_URL_FORMAT.format(**params)
 
     def _get_token(self):
-        if self.token_file is not None:
-            try:
-                with open(self.token_file, 'r') as token_file:
-                    return token_file.readline()
-            except:
-                return ''
-        else:
-            return self.token
+        params = {
+            'host': self.host
+        }
+        try:
+            resp = requests.get(self._TOKEN_URL_FORMAT.format(**params))
+            resp.raise_for_status()
+            return resp.content.split(b':')[0].decode('utf-8')
+        except:
+            return ''
+        # if self.token_file is not None:
+        #     try:
+        #         with open(self.token_file, 'r') as token_file:
+        #             return token_file.readline()
+        #     except:
+        #         return ''
+        # else:
+        #     return self.token
 
     def _set_token(self, token):
         _LOGGING.info('New token %s', token)

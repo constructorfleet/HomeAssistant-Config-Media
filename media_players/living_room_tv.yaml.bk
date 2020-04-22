@@ -1,7 +1,0 @@
-platform: samsungtv_tizen
-name: Living Room TV
-host: 10.0.11.20
-port: 8002
-api_key: !secret samsung_api_key
-device_id: !secret samsung_device_id_living_room_tv
-update_method: websockets
