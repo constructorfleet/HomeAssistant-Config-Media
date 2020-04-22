@@ -1,0 +1,5 @@
+platform: samsungtv_tizen
+host: 10.0.11.24
+port: 8002
+api_key: !secret samsung_api_key
+device_id: !secret samsung_device_id_porch_tv
