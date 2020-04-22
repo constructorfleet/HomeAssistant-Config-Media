@@ -26,6 +26,7 @@ import time
 import ssl
 import websocket
 import requests
+from urllib.parse import quote
 from . import exceptions
 from . import shortcuts
 
@@ -33,8 +34,8 @@ _LOGGING = logging.getLogger(__name__)
 
 
 class SamsungTVWS:
-    _URL_FORMAT = 'ws://{host}:{port}/api/v2/channels/samsung.remote.control?name={name}'
-    _SSL_URL_FORMAT = 'wss://{host}:{port}/api/v2/channels/samsung.remote.control?name={name}&token={token}'
+    _URL_FORMAT = 'ws://{host}:{port}/api/v2/channels/samsung.remote.control&name={name}'
+    _SSL_URL_FORMAT = 'wss://{host}:{port}/api/v2/channels/samsung.remote.control&name={name}&token={token}'
     _REST_URL_FORMAT = 'http://{host}:8001/api/v2/{append}'
     _TOKEN_URL_FORMAT = 'http://{host}:8000/socket.io/1'
 
@@ -60,7 +61,8 @@ class SamsungTVWS:
         if isinstance(string, str):
             string = str.encode(string)
 
-        return base64.b64encode(string).decode('utf-8')
+        # return base64.b64encode(string).decode('utf-8')
+        return quote(string)
 
     def _is_ssl_connection(self):
         return self.port == 8002
@@ -119,7 +121,8 @@ class SamsungTVWS:
             self.open()
 
         payload = json.dumps(command)
-        self.connection.send(payload)
+        _LOGGING.debug('Send {}'.format(self.connection.send(payload)))
+        _LOGGING.debug('Resp {}'.format(self.connection.recv()))
 
         if key_press_delay is None:
             time.sleep(self.key_press_delay)

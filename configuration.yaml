@@ -32,3 +32,8 @@ cast:
 
 mqtt: !include mqtt.yaml
 mqtteventstream: !include eventstream.yaml
+
+logger:
+  default: info
+  logs:
+    custom_components.samsungtv_tizen: debug
