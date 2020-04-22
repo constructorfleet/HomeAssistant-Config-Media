@@ -34,8 +34,8 @@ _LOGGING = logging.getLogger(__name__)
 
 
 class SamsungTVWS:
-    _URL_FORMAT = 'ws://{host}:{port}/api/v2/channels/samsung.remote.control&name={name}'
-    _SSL_URL_FORMAT = 'wss://{host}:{port}/api/v2/channels/samsung.remote.control&name={name}&token={token}'
+    _URL_FORMAT = 'ws://{host}:{port}/api/v2/channels/samsung.remote.control?name={name}'
+    _SSL_URL_FORMAT = 'wss://{host}:{port}/api/v2/channels/samsung.remote.control?name={name}&token={token}'
     _REST_URL_FORMAT = 'http://{host}:8001/api/v2/{append}'
     _TOKEN_URL_FORMAT = 'http://{host}:8000/socket.io/1'
 
@@ -61,8 +61,8 @@ class SamsungTVWS:
         if isinstance(string, str):
             string = str.encode(string)
 
-        # return base64.b64encode(string).decode('utf-8')
-        return quote(string)
+        return base64.b64encode(string).decode('utf-8')
+        # return quote(string)
 
     def _is_ssl_connection(self):
         return self.port == 8002
@@ -89,23 +89,23 @@ class SamsungTVWS:
         return self._REST_URL_FORMAT.format(**params)
 
     def _get_token(self):
-        params = {
-            'host': self.host
-        }
-        try:
-            resp = requests.get(self._TOKEN_URL_FORMAT.format(**params))
-            resp.raise_for_status()
-            return resp.content.split(b':')[0].decode('utf-8')
-        except:
-            return ''
-        # if self.token_file is not None:
-        #     try:
-        #         with open(self.token_file, 'r') as token_file:
-        #             return token_file.readline()
-        #     except:
-        #         return ''
-        # else:
-        #     return self.token
+        # params = {
+        #     'host': self.host
+        # }
+        # try:
+        #     resp = requests.get(self._TOKEN_URL_FORMAT.format(**params))
+        #     resp.raise_for_status()
+        #     return resp.content.split(b':')[0].decode('utf-8')
+        # except:
+        #     return ''
+        if self.token_file is not None:
+            try:
+                with open(self.token_file, 'r') as token_file:
+                    return token_file.readline()
+            except:
+                return ''
+        else:
+            return self.token
 
     def _set_token(self, token):
         _LOGGING.info('New token %s', token)
