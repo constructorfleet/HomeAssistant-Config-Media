@@ -26,7 +26,6 @@ import time
 import ssl
 import websocket
 import requests
-from urllib.parse import quote
 from . import exceptions
 from . import shortcuts
 
@@ -37,7 +36,6 @@ class SamsungTVWS:
     _URL_FORMAT = 'ws://{host}:{port}/api/v2/channels/samsung.remote.control?name={name}'
     _SSL_URL_FORMAT = 'wss://{host}:{port}/api/v2/channels/samsung.remote.control?name={name}&token={token}'
     _REST_URL_FORMAT = 'http://{host}:8001/api/v2/{append}'
-    _TOKEN_URL_FORMAT = 'http://{host}:8000/socket.io/1'
 
     def __init__(self, host, token=None, token_file=None, port=8001, timeout=None, key_press_delay=1,
                  name='SamsungTvRemote', app_list=None):
@@ -62,7 +60,6 @@ class SamsungTVWS:
             string = str.encode(string)
 
         return base64.b64encode(string).decode('utf-8')
-        # return quote(string)
 
     def _is_ssl_connection(self):
         return self.port == 8002
@@ -89,15 +86,6 @@ class SamsungTVWS:
         return self._REST_URL_FORMAT.format(**params)
 
     def _get_token(self):
-        # params = {
-        #     'host': self.host
-        # }
-        # try:
-        #     resp = requests.get(self._TOKEN_URL_FORMAT.format(**params))
-        #     resp.raise_for_status()
-        #     return resp.content.split(b':')[0].decode('utf-8')
-        # except:
-        #     return ''
         if self.token_file is not None:
             try:
                 with open(self.token_file, 'r') as token_file:
@@ -121,8 +109,7 @@ class SamsungTVWS:
             self.open()
 
         payload = json.dumps(command)
-        _LOGGING.debug('Send {}'.format(self.connection.send(payload)))
-        _LOGGING.debug('Resp {}'.format(self.connection.recv()))
+        self.connection.send(payload)
 
         if key_press_delay is None:
             time.sleep(self.key_press_delay)
