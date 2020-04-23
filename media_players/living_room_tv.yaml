@@ -1,10 +1,8 @@
-platform: samsungtv_tizen
-name: 'Living Room TV'
+platform: samsungtv_custom
 host: 10.0.11.28
 port: 8002
-api_key: !secret samsung_api_key
-device_id: !secret samsung_device_id_living_room_tv
-update_method: websockets
-app_list: '{"Plex": "kIciSQlYEM.plex", "Spotify":"rJeHak5zRg.Spotify"}'
-source_list: '{"HDMI": "KEY_HDMI"}'
-scan_app_http: False
+mac: d4:9d:c0:b7:a3:b2
+protocol: ctl_qled
+sourcelist: '{"Apple TV": "KEY_HDMI1", "Switch": "KEY_HDMI2"}'
+applist: "Plex, Apple TV, Plex, Prime Video, Spotify"
+protocol: ctl_qled
