@@ -1,6 +1,5 @@
 platform: samsungtv_custom
 host: 10.0.11.28
-port: 8002
 mac: d4:9d:c0:b7:a3:b2
 protocol: ctl_qled
 sourcelist: '{"Apple TV": "KEY_HDMI1", "Switch": "KEY_HDMI2"}'
