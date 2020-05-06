@@ -1,0 +1,3 @@
+platform: forked-daapd
+host: automation_daapd
+port: 3689
