@@ -25,7 +25,7 @@ config:
 
 ssdp:
 
-# media_player:  !include_dir_list media_players
+media_player:  !include_dir_list media_players
 remote: !include_dir_list remotes
 spotify: !include spotify.yaml
 
