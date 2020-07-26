@@ -1,6 +1,6 @@
 """Constants for the Apple TV integration."""
 
-DOMAIN = "appletv"
+DOMAIN = "apple_tv"
 
 ATTR_MEDIA_GENRE = "genre"
 
