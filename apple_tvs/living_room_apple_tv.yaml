@@ -1,3 +1,0 @@
-host: !secret living_room_apple_tv_host
-login_id: !secret living_room_apple_tv_login_id
-name: Living Room
