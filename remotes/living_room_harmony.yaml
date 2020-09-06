@@ -1,4 +1,0 @@
-platform: harmony
-name: Living Room Harmony Hub
-host: !secret living_room_harmony_host
-port: !secret living_room_harmony_port
